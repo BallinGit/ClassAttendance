@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ClassAttendance.Models.ReportModel>
+
+@using (Html.BeginForm("Index", "Report", FormMethod.Get))
+{
+    <label class="control-label">Select Term</label>
+    @Html.DropDownList("TermID", new SelectList(ViewBag.ListOfTerms, "TermID", "TermName"), htmlAttributes: new { @class = "form - control" })
+    <br />
+    <input type="submit" value="Search" />
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Classes.ClassName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grades.GradeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.StudentFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassesAttended)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassesMissed)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Classes.ClassName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grades.GradeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Students.StudentFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassesAttended)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassesMissed)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

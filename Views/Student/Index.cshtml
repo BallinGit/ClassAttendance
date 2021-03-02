@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ClassAttendance.Models.StudentModel>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Classes.ClassName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classes.ClassName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

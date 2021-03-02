@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ClassAttendance.Models.AttendanceModel>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@using (Html.BeginForm("Index", "Attendance", FormMethod.Get))
+{
+    <label class="control-label">Select Class</label>
+    @Html.DropDownList("ClassID", new SelectList(ViewBag.ListOfClasses, "ClassID", "ClassName"), htmlAttributes: new { @class = "form - control"})
+    <br />
+    <input type="submit" value="Search" />
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Classes.ClassName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.StudentFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttendanceDateTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classes.ClassName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Students.StudentFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceDateTime)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new {  id=item.AttendanceID  })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ClassAttendance.Models.TermModel>
+
+@{
+    ViewData["Title"] = "Term page";
+}
+
+<h1>Index</h1>
+
+<p>
+    <h1>Term item values are fixed with no need to Manage</h1>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+   
+            <th>
+                @Html.DisplayNameFor(model => model.TermName)
+            </th>
+          
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.TermName)
+            </td>
+ 
+        </tr>
+}
+    </tbody>
+</table>
